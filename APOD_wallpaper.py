@@ -12,12 +12,19 @@ d = d.strftime('%Y-%m-%d')
 
 
 # get image and description
-k = 'u4PcbuG9h6gmsKM1uwaLIRSBMxAsgTo3r8757lrR'
+
+##
+k = 'Your key here'
+##
+
 nasa = nasapy.Nasa(key=k)
 apod = nasa.picture_of_the_day(date=d, hd=True)
 
 title = d +' '+ apod["title"] + ".jpg"
-image_dir = 'C:/Users/hperu/OneDrive/Pictures/Screenshots/Nasa_images'
+
+##
+image_dir = ' Put image directory here'
+##
 
 ssl._create_default_https_context = ssl._create_unverified_context
 urllib.request.urlretrieve(url = apod["hdurl"] , filename = os.path.join(image_dir,title))
@@ -38,7 +45,9 @@ cv2.imwrite(path, resized_image)
 ctypes.windll.user32.SystemParametersInfoW(20, 0, path , 1)
 
 # show explanation on main screen automatically 
-with open('C:/Users/hperu/AppData/Roaming/Microsoft/Windows/Start Menu/Programs/Startup/space.txt', 'w') as f:
-    f.write(apod["explanation"])
 
+##
+with open('C:/Users/'USER_NAME'/AppData/Roaming/Microsoft/Windows/Start Menu/Programs/Startup/space.txt', 'w') as f:
+    f.write(apod["explanation"])
+##
 
